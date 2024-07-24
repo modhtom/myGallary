@@ -1,0 +1,38 @@
+body {
+    font-family: 'DotGothic16';
+    text-align: center;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+.container {
+    margin: 50px auto;
+    width: 80%;
+}
+.error-code {
+    font-size: 50px;
+}
+.cat-image {
+    max-width: 100%;
+    height: auto;
+}
+.message {
+    font-size: 50px;
+    margin: 20px 0;
+}
+.return {
+    margin-top: 30px;
+}
+.return a {
+    text-decoration: none;
+    color: white;
+    background-color: #28a745;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+.return a:hover {
+    background-color: #218838;
+}
