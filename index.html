@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,31 +13,46 @@
   <link rel="icon" href="/image/logo.png" type="image/icon type">
   <title>MODHTOM</title>
 </head>
-<body>
-  <div id="preload"></div> 
 
+<body>
+  <!-- <div id="preload"></div> -->
   <header class="header">
     <div class="identity">
       <a href="/index.html"><img src="/image/logo.png" alt="MODHTOM"></a>
       <h1><a href="/index.html">MODHTOM</a></h1>
-    </div>  
+    </div>
     <nav class="navigation" role="navigation" aria-label="Main Navigation">
       <ul class="nav">
-        <li><a href="https://www.modhtom.com/index.html" target="_blank">About</a></li> 
+        <li><a href="https://www.modhtom.com/index.html" target="_blank">About</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="gallery">
-    <h2>In the realm of photography enthusiast, I capture moments with my<br>
-      Nikon FM2, equipped with a Nikon Series E 50mm f/1.8 AI lens</h2>
+    <h2>In the realm of photography enthusiast, I capture moments with my<br> Nikon FM2, equipped with a Nikon Series E 50mm f/1.8 AI lens</h2>
+
+    <!-- Filters -->
+    <div class="filters">
+      <button onclick="filterImages('all')">All</button>
+      <button onclick="filterImages('new')">New</button>
+      <button onclick="filterImages('Rand')">Unique Vibes</button>
+      <button onclick="filterImages('Korba')">Korba</button>
+      <button onclick="filterImages('Maadi')">Maadi</button>
+      <button onclick="filterImages('OldCairo')">OldCairo</button>
+      <button onclick="filterImages('Alex')">Alex</button>
+      <button onclick="filterImages('Car')">Car Show</button>
+    </div>
+
     <div class="gallery-images"></div>
   </section>
+
   <div id="modal" class="modal">
     <span class="close">&times;</span>
     <img class="modal-content" id="modal-img">
     <div id="modal-caption"></div>
   </div>
+
   <script src="/js/P.js"></script>
 </body>
+
 </html>

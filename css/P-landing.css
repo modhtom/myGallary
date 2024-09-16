@@ -152,6 +152,25 @@ a {
     height: 150px;
 }
 
+.filters {
+    text-align: center;
+    margin: 1em 0;
+  }
+  
+  .filters button {
+    background-color: #C3B1E1;
+    color: #000;
+    border: none;
+    padding: 0.5em 1em;
+    margin: 0 0.5em;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+  }
+  
+  .filters button:hover {
+    background-color: #9a82cc;
+  }  
+
 .close {
     position: absolute;
     top: 15px;
