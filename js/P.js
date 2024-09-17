@@ -100,20 +100,31 @@ document.addEventListener("DOMContentLoaded", function () {
   // Attach filterImages function to the global scope so buttons can call it
   window.filterImages = filterImages;
 
+  
   var modal = document.getElementById("modal");
   var modalImg = document.getElementById("modal-img");
   var captionText = document.getElementById("modal-caption");
 
   document.addEventListener("click", function (e) {
     if (e.target.tagName === "IMG" && e.target.closest(".gallery-item")) {
-      modal.style.display = "block";
-      modalImg.src = e.target.src;
-      captionText.innerHTML = e.target.alt;
+      modal.style.display = "flex";
+      modalImg.src = e.target.src || e.target.dataset.src;
+      modal.classList.add("show");
     }
   });
 
   var span = document.getElementsByClassName("close")[0];
   span.onclick = function () {
-    modal.style.display = "none";
+    modal.classList.remove("show");
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 300);
+  };
+
+  // Close modal when clicking outside the image
+  modal.onclick = function(event) {
+    if (event.target === modal) {
+      span.onclick();
+    }
   };
 });
