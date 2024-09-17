@@ -1,4 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+  // Hide preloader after the page loads
+  window.addEventListener('load', function () {
+    document.getElementById('preload').style.display = 'none';
+  });
+
+  // Fallback to hide preloader after 1 minute even if page is not loaded
+  setTimeout(function () {
+    document.getElementById('preload').style.display = 'none';
+  }, 60000); 
+
+  if (!localStorage.getItem('popupDisplayed')) {
+    alert('Some images may not display correctly on certain devices. For a better viewing experience, please try another device or visit my Instagram page to some of the images.');
+    localStorage.setItem('popupDisplayed', 'true');
+  }
+
   var galleryContainer = document.querySelector(".gallery-images");
 
   // Load the images for the initial category (All)
