@@ -27,21 +27,23 @@ document.addEventListener("DOMContentLoaded", function () {
     if (category === 'all') {
       // If 'all' is selected, load all categories sequentially
       loadCategoryImages('Alex', 71);
-      loadCategoryImages('Korba', 21);
+      loadCategoryImages('Korba', 23);
       loadCategoryImages('Car', 35);
-      loadCategoryImages('Maadi', 30);
+      loadCategoryImages('Maadi', 45);
       loadCategoryImages('OldCairo', 13);
-      loadCategoryImages('Rand', 20);
+      loadCategoryImages('PORT', 22);
+      loadCategoryImages('Rand', 21);
     } else {
       // Load a specific category
       var totalImages = 0;
 
       if (category === 'Alex') totalImages = 71;
-      else if (category === 'Korba') totalImages = 21;
+      else if (category === 'Korba') totalImages = 23;
       else if (category === 'Car') totalImages = 35;
-      else if (category === 'Maadi') totalImages = 30;
+      else if (category === 'Maadi') totalImages = 45;
       else if (category === 'OldCairo') totalImages = 13;
-      else if (category === 'Rand') totalImages = 20;
+      else if (category === 'Rand') totalImages = 21;
+      else if (category === 'PORT') totalImages = 22;
 
       loadCategoryImages(category, totalImages);
     }
@@ -80,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
       galleryItem.classList.add("gallery-item");
 
       var img = document.createElement("img");
-      img.dataset.src = `${imageFolder}${category} (${i}).JPG`; // Dynamic path based on category
+      img.dataset.src = `${imageFolder}${category} (${i}).jpeg`; // Dynamic path based on category
       img.alt = `${category} Image ${i}`;
       img.classList.add("lazy");
 
@@ -128,3 +130,50 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const filterButtons = document.querySelectorAll('.filters button');
+  const galleryImages = document.querySelectorAll('.gallery-item');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove 'active' class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      
+      // Add 'active' class to the clicked button
+      this.classList.add('active');
+
+      const filter = this.getAttribute('data-filter');
+
+      galleryImages.forEach(image => {
+        if (filter === 'all' || image.classList.contains(filter)) {
+          image.style.display = 'block';
+        } else {
+          image.style.display = 'none';
+        }
+      });
+    });
+  });
+});
+
+function filterImages(category) {
+  const filterButtons = document.querySelectorAll('.filters button');
+  const galleryImages = document.querySelectorAll('.gallery-item');
+
+  // Remove 'active' class from all buttons
+  filterButtons.forEach(btn => btn.classList.remove('active'));
+  
+  // Add 'active' class to the clicked button
+  const clickedButton = document.querySelector(`.filters button[onclick="filterImages('${category}')"]`);
+  if (clickedButton) {
+    clickedButton.classList.add('active');
+  }
+
+  galleryImages.forEach(image => {
+    if (category === 'all' || image.classList.contains(category)) {
+      image.style.display = 'block';
+    } else {
+      image.style.display = 'none';
+    }
+  });
+}
