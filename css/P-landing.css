@@ -78,9 +78,6 @@ body {
 
 /* Hero Section */
 .hero {
-  background-image: url("/image/header.png");
-  background-size: cover;
-  background-position: center;
   height: 50vh;
   display: flex;
   align-items: center;
@@ -142,24 +139,38 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-}
-
-.gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  aspect-ratio: 1 / 1;
 }
 
 .gallery-item img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
   transition: transform var(--transition-speed) ease;
 }
 
-.gallery-item:hover img {
-  transform: scale(1.05);
+.gallery-item img.lazy {
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
+.gallery-item img.loaded {
+  opacity: 1;
+}
+
+.gallery-item img.error {
+  opacity: 1;
+  object-fit: contain;
+  padding: 20px;
+  background-color: #f8f8f8;
+}
+
+@media (max-width: 768px) {
+  .gallery-images {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}
 /* Modal Styles */
 .modal {
   display: none;
