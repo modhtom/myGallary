@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const categoryImages = {
       'Alex': 71, 'Korba': 45, 'Car': 35, 'Maadi': 45,
-      'OldCairo': 13, 'PORT': 22, 'Rand': 22, 'new': 23
+      'OldCairo': 13, 'PORT': 22, 'Rand': 22, 'new': 40
     };
 
     if (category === 'all') {
