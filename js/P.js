@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     galleryContainer.innerHTML = ''; // Clear existing images
 
     const categoryImages = {
-      'Alex': 71, 'Korba': 45, 'Car': 35, 'Maadi': 45,
+      'Alex': 71, 'Korba': 50, 'Car': 35, 'Maadi': 45,
       'OldCairo': 13, 'PORT': 22, 'Rand': 22, 'new': 40
     };
 
@@ -68,24 +68,24 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   function loadCategoryImages(category, totalImages) {
     var imageFolder = "/image/All/"; // Verify this path is correct
-    var fileExtensions = ['.jpeg', '.jpg', '.png','.HEIC']; // Add more if needed
-  
+    var fileExtensions = ['.jpeg', '.jpg', '.png', '.HEIC']; // Add more if needed
+
     for (var i = 1; i <= totalImages; i++) {
       try {
         var galleryItem = document.createElement("div");
         galleryItem.classList.add("gallery-item", category.toLowerCase());
-  
+
         var img = document.createElement("img");
         img.alt = `${category} Image ${i}`;
         img.classList.add("lazy");
-  
+
         // Try different file extensions
         var imagePath = `${imageFolder}${category} (${i})`;
         img.dataset.src = imagePath + fileExtensions[0]; // Default to first extension
-  
+
         console.log(`Preparing to load image: ${img.dataset.src}`);
-  
-        img.onerror = function() {
+
+        img.onerror = function () {
           var currentExtIndex = fileExtensions.indexOf(this.src.split('.').pop());
           if (currentExtIndex < fileExtensions.length - 1) {
             // Try next extension
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.classList.add('error');
           }
         };
-  
+
         galleryItem.appendChild(img);
         galleryContainer.appendChild(galleryItem);
       } catch (error) {
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
-  
+
   // Add this function to check server for image existence
   function checkServerForImage(imagePath) {
     return fetch(imagePath, { method: 'HEAD' })
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return false;
       });
   }
-  
+
   // Modify the Intersection Observer callback
   let imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
@@ -142,9 +142,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }, { rootMargin: "0px 0px 500px 0px" });
 
   // Filter images based on the selected category
-  window.filterImages = function(category) {
+  window.filterImages = function (category) {
     loadImages(category);
-    
+
     // Update active button
     document.querySelectorAll('.filters button').forEach(btn => {
       btn.classList.remove('active');
@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   // Close modal when clicking outside the image
-  modal.onclick = function(event) {
+  modal.onclick = function (event) {
     if (event.target === modal) {
       span.onclick();
     }
